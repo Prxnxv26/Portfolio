@@ -353,12 +353,33 @@ section {
   border-radius: 50%;
   box-shadow: 0 0 12px var(--accent);
 }
+/* Active/current role gets a pulsing dot */
+.timeline-item.active::before {
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 12px var(--accent); }
+  50% { box-shadow: 0 0 24px var(--accent), 0 0 40px rgba(0,255,157,0.3); }
+}
 .timeline-meta {
   font-family: var(--mono);
   font-size: 11px;
   color: var(--muted);
   letter-spacing: 0.1em;
   margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.badge-active {
+  font-family: var(--mono);
+  font-size: 9px;
+  padding: 2px 8px;
+  background: rgba(0,255,157,0.12);
+  color: var(--accent);
+  border: 1px solid rgba(0,255,157,0.3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 .timeline-role {
   font-family: var(--display);
@@ -581,8 +602,8 @@ footer {
   <div class="stats-inner">
     <div class="stat"><span class="stat-num">8.0</span><span class="stat-label">GPA / 10</span></div>
     <div class="stat"><span class="stat-num">2+</span><span class="stat-label">Years Research</span></div>
+    <div class="stat"><span class="stat-num">3</span><span class="stat-label">Internships</span></div>
     <div class="stat"><span class="stat-num">5</span><span class="stat-label">Certifications</span></div>
-    <div class="stat"><span class="stat-num">3</span><span class="stat-label">Practice Platforms</span></div>
     <div class="stat"><span class="stat-num">CTF</span><span class="stat-label">Competitions</span></div>
   </div>
 </div>
@@ -712,16 +733,35 @@ footer {
   <div class="section-label">// history</div>
   <div class="section-title">Experience</div>
   <div class="timeline">
+
+    <!-- NEW: Bulwark Technologies — current role -->
+    <div class="timeline-item active">
+      <div class="timeline-meta">
+        JAN 2026 — PRESENT
+        <span class="badge-active">● Active</span>
+      </div>
+      <div class="timeline-role">Cybersecurity Intern</div>
+      <div class="timeline-company">Bulwark Technologies Pvt. Ltd.</div>
+      <ul class="timeline-bullets">
+        <li>Working on Managed File Transfer (MFT) security — analyzing secure file transfer workflows and identifying configuration risks in enterprise MFT deployments using GoAnywhere MFT.</li>
+        <li>Hands-on with GoAnywhere MFT setup and hardening, covering SFTP, FTPS, HTTPS secure transfer protocols, user access controls, and audit logging.</li>
+        <li>Assisting in vulnerability assessments and security testing engagements across client environments, identifying and documenting security misconfigurations and weaknesses.</li>
+        <li>Supporting threat analysis and security monitoring tasks, contributing to incident detection and response workflows.</li>
+      </ul>
+    </div>
+
     <div class="timeline-item">
       <div class="timeline-meta">MAR 2025 — MAY 2025</div>
       <div class="timeline-role">Cybersecurity Intern</div>
-      <div class="timeline-company">DeepCytes</div>
+      <div class="timeline-company">Deepcytes Cyber Labs UK</div>
       <ul class="timeline-bullets">
-        <li>Performed vulnerability analysis and OSINT-based reconnaissance on real-world targets</li>
-        <li>Worked with threat detection workflows, analyzed security events and contributed to incident documentation</li>
-        <li>Produced structured vulnerability reports with actionable remediation recommendations</li>
+        <li>Conducted vulnerability assessment and penetration testing engagements, identifying and documenting security flaws across client web applications.</li>
+        <li>Performed OSINT-based reconnaissance using Shodan, Maltego, and custom Python scripts to map attack surfaces and enumerate exposed assets.</li>
+        <li>Assisted in building threat detection workflows integrating SIEM alerts with incident response playbooks, reducing mean time to detect (MTTD).</li>
+        <li>Authored detailed security reports covering vulnerability findings, CVSS risk ratings, and remediation recommendations.</li>
       </ul>
     </div>
+
     <div class="timeline-item">
       <div class="timeline-meta">JUN 2024 — FEB 2025</div>
       <div class="timeline-role">Cybersecurity Research Assistant</div>
@@ -732,6 +772,7 @@ footer {
         <li>Delivered technical sessions to MTech Cybersecurity students on offensive security concepts</li>
       </ul>
     </div>
+
     <div class="timeline-item">
       <div class="timeline-meta">NOV 2022 — JUN 2026</div>
       <div class="timeline-role">B.Tech Information Technology — Honors in Cybersecurity</div>
@@ -741,6 +782,7 @@ footer {
         <li>Participated in KJSSE CTF and multiple cybersecurity research initiatives</li>
       </ul>
     </div>
+
   </div>
 </section>
 
